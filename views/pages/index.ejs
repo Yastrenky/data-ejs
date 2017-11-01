@@ -1,9 +1,11 @@
 <!-- views/pages/index.ejs -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <% include ../partials/head %>
 </head>
+
 <body class="container">
 
   <header>
@@ -15,7 +17,28 @@
     <div class="jumbotron">
       <h2>Map</h2>
       <% drinks.map(function(element) { %>
-          <li><%= element.id_str %><div><%= element.text %></div></li>
+        <li>ID:
+          <%= element.id_str %>
+            <div class="alert alert-info">
+              <%= element.text %>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Scree Name</th>
+                      <th>Location</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> <%= element.user.screen_name %></td>
+                      <td> <%= element.user.location %></td>
+                      <td> <%= element.user.description %></td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+        </li>
         <% }); %>
 
     </div>
@@ -25,4 +48,5 @@
     <% include ../partials/footer %>
   </footer>
 </body>
+
 </html>
